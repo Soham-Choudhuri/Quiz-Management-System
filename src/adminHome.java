@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import java.awt.Graphics;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -38,21 +39,41 @@ public class adminHome extends javax.swing.JFrame {
         jMenu7 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1078, 537));
+        setMinimumSize(new java.awt.Dimension(1078, 537));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1078, 537));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/index background.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pages background admin.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 470));
+
+        jMenuBar1.setMaximumSize(new java.awt.Dimension(958, 67));
+        jMenuBar1.setMinimumSize(new java.awt.Dimension(958, 67));
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(958, 67));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/add new question.png"))); // NOI18N
         jMenu1.setText("Add New");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenu1.setMargin(new java.awt.Insets(0, 5, 0, 30));
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Update Question.png"))); // NOI18N
         jMenu2.setText("Update");
         jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenu2.setMargin(new java.awt.Insets(0, 5, 0, 30));
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/all questions.png"))); // NOI18N
@@ -118,6 +139,32 @@ public class adminHome extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_jMenu7MouseClicked
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        if (open == 0) {
+            new addNewQuestion().setVisible(true);
+            open = 1;
+        }
+        else
+        {
+            JFrame jf = new JFrame();
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showMessageDialog(jf, "One form is already open");
+        }
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        if (open == 0) {
+            new updateQuestion().setVisible(true);
+            open = 1;
+        }
+        else
+        {
+            JFrame jf = new JFrame();
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showMessageDialog(jf, "One form is already open");
+        }
+    }//GEN-LAST:event_jMenu2MouseClicked
 
     /**
      * @param args the command line arguments
