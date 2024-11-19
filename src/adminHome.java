@@ -39,10 +39,8 @@ public class adminHome extends javax.swing.JFrame {
         jMenu7 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1078, 537));
         setMinimumSize(new java.awt.Dimension(1078, 537));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1078, 537));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -80,6 +78,11 @@ public class adminHome extends javax.swing.JFrame {
         jMenu3.setText("View");
         jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenu3.setMargin(new java.awt.Insets(0, 5, 0, 30));
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete Question.png"))); // NOI18N
@@ -165,6 +168,19 @@ public class adminHome extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jf, "One form is already open");
         }
     }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        if (open == 0) {
+            new allQuestion().setVisible(true);
+            open = 1;
+        }
+        else
+        {
+            JFrame jf = new JFrame();
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showMessageDialog(jf, "One form is already open");
+        }
+    }//GEN-LAST:event_jMenu3MouseClicked
 
     /**
      * @param args the command line arguments
