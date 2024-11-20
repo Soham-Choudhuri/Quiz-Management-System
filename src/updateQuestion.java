@@ -50,8 +50,11 @@ public class updateQuestion extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton3.setEnabled(false);
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jButton5.setEnabled(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 204, 255));
@@ -131,11 +134,6 @@ public class updateQuestion extends javax.swing.JFrame {
         jTextField3.setBackground(new java.awt.Color(255, 255, 255));
         jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 195, 970, -1));
 
         jTextField4.setBackground(new java.awt.Color(255, 255, 255));
@@ -192,12 +190,24 @@ public class updateQuestion extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 454, 880, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 454, 760, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("NOTE: Make sure to close this window before opening another one!");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
+
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(0, 0, 0));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete.png"))); // NOI18N
+        jButton5.setText("Delete");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(872, 454, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -222,14 +232,20 @@ public class updateQuestion extends javax.swing.JFrame {
                 jTextField7.setText(rs.getString(7));
 
                 jTextField1.setEditable(false);
+                jButton5.setEnabled(true);
+                jButton3.setEnabled(true);
             }
             else
             {
+                jButton5.setEnabled(false);
+                jButton3.setEnabled(false);
                 JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, "Question ID doesn't exist!");
             }
         } catch (Exception e) {
+            jButton5.setEnabled(false);
+            jButton3.setEnabled(false);
             JFrame jf = new JFrame();
             jf.setAlwaysOnTop(true);
             JOptionPane.showMessageDialog(jf, e);
@@ -278,11 +294,30 @@ public class updateQuestion extends javax.swing.JFrame {
         jTextField6.setText("");
         jTextField7.setText("");
         jTextField1.setEditable(true);
+        jButton3.setEnabled(false);
+        jButton5.setEnabled(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        String id = jTextField1.getText();
+        try {
+            Connection con = ConnectionProvider.getCon();
+            PreparedStatement ps = con.prepareStatement("delete from question where id=?");
+            ps.setString(1, id);
+            ps.executeUpdate();
+            JFrame jf = new JFrame();
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showMessageDialog(jf, "Successfully deleted!");
+            setVisible(false);
+            new updateQuestion().setVisible(true);
+            jButton5.setEnabled(false);
+        } catch (Exception e) {
+            jButton5.setEnabled(true);
+            JFrame jf = new JFrame();
+            jf.setAlwaysOnTop(true);
+            JOptionPane.showMessageDialog(jf, e);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,6 +359,7 @@ public class updateQuestion extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

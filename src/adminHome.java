@@ -28,7 +28,6 @@ public class adminHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -36,18 +35,18 @@ public class adminHome extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1078, 537));
+        setTitle("Admin - Home");
+        setMaximumSize(new java.awt.Dimension(1080, 511));
+        setMinimumSize(new java.awt.Dimension(1080, 511));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1080, 511));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new java.awt.FlowLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pages background admin.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 470));
-
+        jMenuBar1.setBackground(new java.awt.Color(0, 204, 255));
+        jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));
         jMenuBar1.setMaximumSize(new java.awt.Dimension(958, 67));
         jMenuBar1.setMinimumSize(new java.awt.Dimension(958, 67));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(958, 67));
@@ -85,20 +84,25 @@ public class adminHome extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete Question.png"))); // NOI18N
-        jMenu4.setText("Delete");
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/all student result.png"))); // NOI18N
+        jMenu4.setText("Result");
         jMenu4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenu4.setMargin(new java.awt.Insets(0, 5, 0, 30));
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/all student result.png"))); // NOI18N
-        jMenu5.setText("Result");
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logout.png"))); // NOI18N
+        jMenu5.setText("Logout");
         jMenu5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenu5.setMargin(new java.awt.Insets(0, 5, 0, 30));
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logout.png"))); // NOI18N
-        jMenu6.setText("Logout");
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Close.png"))); // NOI18N
+        jMenu6.setText("Close");
         jMenu6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenu6.setMargin(new java.awt.Insets(0, 5, 0, 30));
         jMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -108,23 +112,12 @@ public class adminHome extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu6);
 
-        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Close.png"))); // NOI18N
-        jMenu7.setText("Close");
-        jMenu7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenu7.setMargin(new java.awt.Insets(0, 5, 0, 30));
-        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu7MouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu7);
-
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MouseClicked
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
         JFrame frame = new JFrame();
         frame.setAlwaysOnTop(true);
         int a = JOptionPane.showConfirmDialog(frame, "Do you really want to log out?", "Select", JOptionPane.YES_NO_OPTION);
@@ -132,16 +125,16 @@ public class adminHome extends javax.swing.JFrame {
             setVisible(false);
             new loginAdmin().setVisible(true);
         }
-    }//GEN-LAST:event_jMenu6MouseClicked
+    }//GEN-LAST:event_jMenu5MouseClicked
 
-    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
+    private void jMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MouseClicked
         JFrame frame = new JFrame();
         frame.setAlwaysOnTop(true);
         int a = JOptionPane.showConfirmDialog(frame, "Do you really want to exit the application?", "Select", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
             System.exit(0);
         }
-    }//GEN-LAST:event_jMenu7MouseClicked
+    }//GEN-LAST:event_jMenu6MouseClicked
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         if (open == 0) {
@@ -218,14 +211,12 @@ public class adminHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

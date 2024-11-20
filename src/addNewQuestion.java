@@ -73,6 +73,7 @@ public class addNewQuestion extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1078, 511));
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1078, 511));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
@@ -204,7 +205,7 @@ public class addNewQuestion extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("NOTE: Make sure to close this window before opening another one!");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, -1, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
