@@ -80,7 +80,6 @@ public class studentDetails extends javax.swing.JFrame {
 
         jLabel_StudentDetails.setBackground(new java.awt.Color(0, 0, 0));
         jLabel_StudentDetails.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
-        jLabel_StudentDetails.setForeground(new java.awt.Color(0, 0, 0));
         jLabel_StudentDetails.setText("Student Details");
 
         jButton_Close.setBackground(new java.awt.Color(255, 0, 0));
@@ -95,31 +94,24 @@ public class studentDetails extends javax.swing.JFrame {
 
         jRoll.setBackground(new java.awt.Color(0, 0, 0));
         jRoll.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jRoll.setForeground(new java.awt.Color(0, 0, 0));
         jRoll.setText("Roll:");
 
         jName.setBackground(new java.awt.Color(0, 0, 0));
         jName.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jName.setForeground(new java.awt.Color(0, 0, 0));
         jName.setText("First Name:");
 
         jGender.setBackground(new java.awt.Color(0, 0, 0));
         jGender.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jGender.setForeground(new java.awt.Color(0, 0, 0));
         jGender.setText("Gender:");
 
         jPhone.setBackground(new java.awt.Color(0, 0, 0));
         jPhone.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jPhone.setForeground(new java.awt.Color(0, 0, 0));
         jPhone.setText("Phone:");
 
         jEmail.setBackground(new java.awt.Color(0, 0, 0));
         jEmail.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jEmail.setForeground(new java.awt.Color(0, 0, 0));
         jEmail.setText("Email:");
 
-        jTextField_Roll.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField_Roll.setForeground(new java.awt.Color(0, 0, 0));
         jTextField_Roll.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField_RollFocusGained(evt);
@@ -129,8 +121,6 @@ public class studentDetails extends javax.swing.JFrame {
             }
         });
 
-        jTextField_Phone.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField_Phone.setForeground(new java.awt.Color(0, 0, 0));
         jTextField_Phone.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField_PhoneFocusGained(evt);
@@ -140,8 +130,6 @@ public class studentDetails extends javax.swing.JFrame {
             }
         });
 
-        jTextField_FirstName.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField_FirstName.setForeground(new java.awt.Color(0, 0, 0));
         jTextField_FirstName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField_FirstNameFocusGained(evt);
@@ -151,8 +139,6 @@ public class studentDetails extends javax.swing.JFrame {
             }
         });
 
-        jTextField_Email.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField_Email.setForeground(new java.awt.Color(0, 0, 0));
         jTextField_Email.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField_EmailFocusGained(evt);
@@ -164,8 +150,6 @@ public class studentDetails extends javax.swing.JFrame {
 
         jButton_Save.setBackground(new java.awt.Color(153, 204, 255));
         jButton_Save.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
-        jButton_Save.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_Save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/save.png"))); // NOI18N
         jButton_Save.setText("Save & Proceed");
         jButton_Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,11 +163,8 @@ public class studentDetails extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Last Name:");
 
-        jTextField_LastName.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField_LastName.setForeground(new java.awt.Color(0, 0, 0));
         jTextField_LastName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField_LastNameFocusGained(evt);
@@ -202,10 +183,8 @@ public class studentDetails extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextArea_Rules);
 
         jLabel_Date.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel_Date.setForeground(new java.awt.Color(0, 0, 0));
         jLabel_Date.setText("Date:");
 
-        jLabel_ShowDate.setForeground(new java.awt.Color(0, 0, 0));
         jLabel_ShowDate.setText("Show_Date");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

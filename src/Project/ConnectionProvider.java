@@ -17,7 +17,7 @@ public class ConnectionProvider {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/qems", "root", "3301");
             return con;
         }
-        catch(Exception e)
+        catch(ClassNotFoundException | SQLException e)
         {
             return null;
         }

@@ -86,7 +86,8 @@ public class quizExamStudent extends javax.swing.JFrame {
             Statement st = con.createStatement();
             st.executeUpdate("update student set marks='"+marks+"' where roll='"+rollNo+"'");
             String markString = String.valueOf(marks);
-            JOptionPane.showMessageDialog(null, markString);
+            setVisible(false);
+            new quizSubmission(markString).setVisible(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -196,10 +197,8 @@ public class quizExamStudent extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(926, 546));
         setMinimumSize(new java.awt.Dimension(926, 546));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(926, 546));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -213,25 +212,25 @@ public class quizExamStudent extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Date:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 26, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
 
         jLabelShowDate.setBackground(new java.awt.Color(0, 0, 0));
         jLabelShowDate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabelShowDate.setForeground(new java.awt.Color(0, 0, 0));
         jLabelShowDate.setText("current_date");
-        getContentPane().add(jLabelShowDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 26, -1, -1));
+        getContentPane().add(jLabelShowDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, -1));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Time Allotted:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(618, 26, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, -1, -1));
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("total_time");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(723, 26, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, -1, -1));
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -250,13 +249,13 @@ public class quizExamStudent extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Time Elasped:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(618, 54, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 50, -1, -1));
 
         jLabelTAM.setBackground(new java.awt.Color(0, 0, 0));
         jLabelTAM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabelTAM.setForeground(new java.awt.Color(0, 0, 0));
-        jLabelTAM.setText("0");
-        getContentPane().add(jLabelTAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 54, -1, -1));
+        jLabelTAM.setText("00");
+        getContentPane().add(jLabelTAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 50, -1, -1));
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
         jLabel10.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -357,7 +356,7 @@ public class quizExamStudent extends javax.swing.JFrame {
         jLabelTAS.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabelTAS.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTAS.setText("00");
-        getContentPane().add(jLabelTAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(747, 54, -1, -1));
+        getContentPane().add(jLabelTAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
