@@ -212,8 +212,8 @@ public class index extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonExitActionPerformed
 
     private void jButton_AdminActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
-        dispose();
         new loginAdmin().setVisible(true);
+        dispose();
     }// GEN-LAST:event_jButton2ActionPerformed
 
     /**
