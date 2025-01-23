@@ -61,8 +61,6 @@ public class studentDetails extends javax.swing.JFrame {
         jTextField_FirstName = new javax.swing.JTextField();
         jTextField_Email = new javax.swing.JTextField();
         jButton_Save = new javax.swing.JButton();
-        jRadioButton_Male = new javax.swing.JRadioButton();
-        jRadioButton_Female = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField_LastName = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -73,6 +71,7 @@ public class studentDetails extends javax.swing.JFrame {
         jLabel_ShowDate = new javax.swing.JLabel();
         jButton_Search = new javax.swing.JButton();
         jButton_Proceed = new javax.swing.JButton();
+        jComboBox_Gender = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(959, 546));
@@ -162,10 +161,6 @@ public class studentDetails extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton_Male.setText("Male");
-
-        jRadioButton_Female.setText("Female");
-
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Last Name:");
@@ -213,6 +208,8 @@ public class studentDetails extends javax.swing.JFrame {
             }
         });
 
+        jComboBox_Gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -231,25 +228,26 @@ public class studentDetails extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jGender)
-                                .addGap(24, 24, 24)
-                                .addComponent(jRadioButton_Male)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton_Female, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jPhone)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTextField_Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jName)
                                         .addGap(18, 18, 18)
                                         .addComponent(jTextField_FirstName))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRoll)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextField_Roll, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jPhone)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextField_Phone)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jGender)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jComboBox_Gender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jRoll)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTextField_Roll, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -287,11 +285,10 @@ public class studentDetails extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jRoll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField_Roll)
-                                .addComponent(jButton_Search)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton_Search)
+                            .addComponent(jTextField_Phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPhone))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jName)
@@ -301,20 +298,19 @@ public class studentDetails extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jGender)
-                            .addComponent(jRadioButton_Male)
-                            .addComponent(jRadioButton_Female))
+                            .addComponent(jComboBox_Gender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jPhone)
-                            .addComponent(jTextField_Phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jEmail)
-                            .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jRoll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField_Roll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
                     .addComponent(jScrollPane2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_Proceed, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(jButton_Proceed, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton_Close, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -325,18 +321,19 @@ public class studentDetails extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_SearchMouseClicked
-        String roll = jTextField_Roll.getText();
-        jButton_Save.setEnabled(false);
+        String phone = jTextField_Phone.getText();
         try {
             Connection con = ConnectionProvider.getCon();
-            PreparedStatement ps = con.prepareStatement("select * from student where roll = ?");
-            ps.setString(1, roll);
+            PreparedStatement ps = con.prepareStatement("select * from student where phone = ?");
+            ps.setString(1, phone);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
+                jButton_Save.setEnabled(false);
                 jTextField_FirstName.setText(rs.getString(2));
                 jTextField_LastName.setText(rs.getString(3));
-                jTextField_Phone.setText(rs.getString(5));
+                jTextField_Roll.setText(rs.getString(1));
                 jTextField_Email.setText(rs.getString(6));
+                jComboBox_Gender.setSelectedItem(rs.getString(4));
                 jTextField_FirstName.setEditable(false);
                 jTextField_LastName.setEditable(false);
                 jTextField_Phone.setEditable(false);
@@ -428,15 +425,7 @@ public class studentDetails extends javax.swing.JFrame {
         String roll = jTextField_Roll.getText();
         String firstname = jTextField_FirstName.getText();
         String lastname = jTextField_LastName.getText();
-        String gender = "";
-
-        if (jRadioButton_Male.isSelected()) {
-            gender = jRadioButton_Male.getText();
-        } else if (jRadioButton_Female.isSelected()) {
-            gender = jRadioButton_Female.getText();
-        } else {
-            gender = "Other";
-        }
+        String gender = (String) jComboBox_Gender.getSelectedItem();
 
         String phone = jTextField_Phone.getText();
         String email = jTextField_Email.getText();
@@ -520,6 +509,7 @@ public class studentDetails extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Proceed;
     private javax.swing.JButton jButton_Save;
     private javax.swing.JButton jButton_Search;
+    private javax.swing.JComboBox<String> jComboBox_Gender;
     private javax.swing.JLabel jEmail;
     private javax.swing.JLabel jGender;
     private javax.swing.JLabel jLabel1;
@@ -528,8 +518,6 @@ public class studentDetails extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_StudentDetails;
     private javax.swing.JLabel jName;
     private javax.swing.JLabel jPhone;
-    private javax.swing.JRadioButton jRadioButton_Female;
-    private javax.swing.JRadioButton jRadioButton_Male;
     private javax.swing.JLabel jRoll;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

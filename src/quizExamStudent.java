@@ -103,7 +103,7 @@ public class quizExamStudent extends javax.swing.JFrame {
 
     public void Submit() {
         String phoneString = jLabel_ShowPhone.getText();
-        answerCheck();
+        //answerCheck();
         try {
             Connection con = ConnectionProvider.getCon();
             Statement st = con.createStatement();
