@@ -43,18 +43,28 @@ public class quizExamStudent extends javax.swing.JFrame {
             jLabelShowMarks.setText(showmarks);
         }
 
-        int showQuestionID = Integer.parseInt(questionID);
-        showQuestionID = showQuestionID + 1;
-        questionID = String.valueOf(showQuestionID);
-
         // clear input of radio buttons
         jRadioButton1.setSelected(false);
         jRadioButton2.setSelected(false);
         jRadioButton3.setSelected(false);
         jRadioButton4.setSelected(false);
 
-        if (questionID.equals("10")) {
-            jButtonNext.setVisible(false);
+        try {
+            Connection con = ConnectionProvider.getCon();
+            Statement st = con.createStatement();
+
+            ResultSet rsCount = st.executeQuery("SELECT COUNT(*) FROM question");
+            rsCount.next();
+            int totalQuestions = rsCount.getInt(1);
+
+            int showQuestionID = Integer.parseInt(questionID) + 1;
+            questionID = String.valueOf(showQuestionID);
+
+            if (showQuestionID > totalQuestions) {
+                jButtonNext.setVisible(false);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
     }
 
@@ -63,8 +73,8 @@ public class quizExamStudent extends javax.swing.JFrame {
             Connection con = ConnectionProvider.getCon();
             Statement st = con.createStatement();
 
-            ResultSet rsQuestion = st.executeQuery("select *from question where id='"+questionID+"'");
-            while (rsQuestion.next()) {
+            ResultSet rsQuestion = st.executeQuery("select *from question where id='" + questionID + "'");
+            if (rsQuestion.next()) {
                 jLabelShowQuestionID.setText(rsQuestion.getString(1));
                 jLabelQuestionName.setText(rsQuestion.getString(2));
                 jRadioButton1.setText(rsQuestion.getString(3));
@@ -73,21 +83,31 @@ public class quizExamStudent extends javax.swing.JFrame {
                 jRadioButton4.setText(rsQuestion.getString(6));
                 answer = rsQuestion.getString(7);
             }
+
+            ResultSet rsCount = st.executeQuery("SELECT COUNT(*) FROM question");
+            rsCount.next();
+            int totalQuestions = rsCount.getInt(1);
+            if (totalQuestions == 1) {
+                jButtonNext.setVisible(false);
+            } else {
+                if (Integer.parseInt(questionID) == totalQuestions) {
+                    jButtonNext.setVisible(false);
+                }
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
 
     public void Submit() {
-        String rollNo = jLabelShowRollNo.getText();
+        String phoneString = jLabel_ShowPhone.getText();
         answerCheck();
         try {
             Connection con = ConnectionProvider.getCon();
             Statement st = con.createStatement();
-            st.executeUpdate("update student set marks='"+marks+"' where roll='"+rollNo+"'");
-            String markString = String.valueOf(marks);
+            st.executeUpdate("update student set marks='" + marks + "' where phone='" + phoneString + "'");
+            new quizSubmission(phoneString).setVisible(true);
             setVisible(false);
-            new quizSubmission(markString).setVisible(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -102,25 +122,26 @@ public class quizExamStudent extends javax.swing.JFrame {
 
     Timer time;
 
-    public quizExamStudent(String getRollNo) {
+    public quizExamStudent(String getPhone) {
         initComponents();
-        jLabelShowRollNo.setText(getRollNo);
 
         // date
         SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date date = new Date();
         jLabelShowDate.setText(dFormat.format(date));
+        jLabel_ShowPhone.setText(getPhone);
 
         // first question & student details
         try {
             Connection con = ConnectionProvider.getCon();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select *from student where roll='"+getRollNo+"'");
+            ResultSet rs = st.executeQuery("select *from student where phone='" + getPhone + "'");
             while (rs.next()) {
                 jLabelUser.setText(rs.getString(2) + " " + rs.getString(3));
+                jLabelShowRollNo.setText(rs.getString(1));
             }
 
-            ResultSet rsQuestion = st.executeQuery("select *from question where id='"+questionID+"'");
+            ResultSet rsQuestion = st.executeQuery("select *from question where id='" + questionID + "'");
             while (rsQuestion.next()) {
                 jLabelShowQuestionID.setText(rsQuestion.getString(1));
                 jLabelQuestionName.setText(rsQuestion.getString(2));
@@ -166,6 +187,7 @@ public class quizExamStudent extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -195,88 +217,80 @@ public class quizExamStudent extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabelShowMarks = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel_ShowPhone = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
+        setMaximumSize(new java.awt.Dimension(926, 546));
         setMinimumSize(new java.awt.Dimension(926, 546));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(926, 546));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelUser.setBackground(new java.awt.Color(0, 0, 0));
         jLabelUser.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        jLabelUser.setForeground(new java.awt.Color(0, 0, 0));
         jLabelUser.setText("User");
         getContentPane().add(jLabelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Date:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
 
         jLabelShowDate.setBackground(new java.awt.Color(0, 0, 0));
         jLabelShowDate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelShowDate.setForeground(new java.awt.Color(0, 0, 0));
         jLabelShowDate.setText("current_date");
         getContentPane().add(jLabelShowDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, -1));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Time Allotted:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, -1, -1));
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("total_time");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, -1, -1));
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Roll:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 54, -1, -1));
 
         jLabelShowRollNo.setBackground(new java.awt.Color(0, 0, 0));
         jLabelShowRollNo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabelShowRollNo.setForeground(new java.awt.Color(0, 0, 0));
         jLabelShowRollNo.setText("user_roll");
         getContentPane().add(jLabelShowRollNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 54, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 82, 926, 10));
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Time Elasped:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 50, -1, -1));
 
         jLabelTAM.setBackground(new java.awt.Color(0, 0, 0));
         jLabelTAM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelTAM.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTAM.setText("00");
         getContentPane().add(jLabelTAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 50, -1, -1));
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
         jLabel10.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Question No:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 98, -1, -1));
 
         jLabel13.setBackground(new java.awt.Color(0, 0, 0));
         jLabel13.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("00");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 98, -1, -1));
 
         jLabelQuestionName.setBackground(new java.awt.Color(0, 0, 0));
         jLabelQuestionName.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabelQuestionName.setForeground(new java.awt.Color(0, 0, 0));
         jLabelQuestionName.setText("Question Sample?");
         getContentPane().add(jLabelQuestionName, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 209, -1, -1));
 
         jRadioButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton1.setText("Answer Sample 1");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,7 +300,6 @@ public class quizExamStudent extends javax.swing.JFrame {
         getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 249, -1, -1));
 
         jRadioButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton2.setText("Answer Sample 2");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,7 +309,6 @@ public class quizExamStudent extends javax.swing.JFrame {
         getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 289, -1, -1));
 
         jRadioButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton3.setText("Answer Sample 3");
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -306,7 +318,6 @@ public class quizExamStudent extends javax.swing.JFrame {
         getContentPane().add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 329, -1, -1));
 
         jRadioButton4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jRadioButton4.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton4.setText("Answer Sample 4");
         jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,14 +328,12 @@ public class quizExamStudent extends javax.swing.JFrame {
 
         jButtonPrev.setBackground(new java.awt.Color(153, 204, 255));
         jButtonPrev.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButtonPrev.setForeground(new java.awt.Color(0, 0, 0));
         jButtonPrev.setText("Previous");
         jButtonPrev.setAlignmentY(0.0F);
         getContentPane().add(jButtonPrev, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 434, -1, -1));
 
         jButtonNext.setBackground(new java.awt.Color(153, 204, 255));
         jButtonNext.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButtonNext.setForeground(new java.awt.Color(0, 0, 0));
         jButtonNext.setText("Next");
         jButtonNext.setAlignmentY(0.0F);
         jButtonNext.addActionListener(new java.awt.event.ActionListener() {
@@ -348,33 +357,36 @@ public class quizExamStudent extends javax.swing.JFrame {
 
         jLabelShowQuestionID.setBackground(new java.awt.Color(0, 0, 0));
         jLabelShowQuestionID.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabelShowQuestionID.setForeground(new java.awt.Color(0, 0, 0));
         jLabelShowQuestionID.setText("00");
         getContentPane().add(jLabelShowQuestionID, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 98, -1, -1));
 
         jLabelTAS.setBackground(new java.awt.Color(0, 0, 0));
         jLabelTAS.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelTAS.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTAS.setText("00");
         getContentPane().add(jLabelTAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Marks Obtained:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 126, -1, -1));
 
         jLabelShowMarks.setBackground(new java.awt.Color(0, 0, 0));
         jLabelShowMarks.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabelShowMarks.setForeground(new java.awt.Color(0, 0, 0));
         jLabelShowMarks.setText("00");
         getContentPane().add(jLabelShowMarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 126, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("/");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 98, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel7.setText("Phone: ");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, -1, -1));
+
+        jLabel_ShowPhone.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel_ShowPhone.setText("user_phone");
+        getContentPane().add(jLabel_ShowPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -481,6 +493,7 @@ public class quizExamStudent extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelQuestionName;
     private javax.swing.JLabel jLabelShowDate;
@@ -490,6 +503,7 @@ public class quizExamStudent extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTAM;
     private javax.swing.JLabel jLabelTAS;
     private javax.swing.JLabel jLabelUser;
+    private javax.swing.JLabel jLabel_ShowPhone;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;

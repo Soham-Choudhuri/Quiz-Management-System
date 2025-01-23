@@ -43,6 +43,7 @@ public class studentDetails extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -70,6 +71,8 @@ public class studentDetails extends javax.swing.JFrame {
         jTextArea_Rules = new javax.swing.JTextArea();
         jLabel_Date = new javax.swing.JLabel();
         jLabel_ShowDate = new javax.swing.JLabel();
+        jButton_Search = new javax.swing.JButton();
+        jButton_Proceed = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(959, 546));
@@ -79,13 +82,14 @@ public class studentDetails extends javax.swing.JFrame {
         setResizable(false);
 
         jLabel_StudentDetails.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel_StudentDetails.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        jLabel_StudentDetails.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel_StudentDetails.setText("Student Details");
 
         jButton_Close.setBackground(new java.awt.Color(255, 0, 0));
-        jButton_Close.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jButton_Close.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jButton_Close.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_Close.setText("X");
+        jButton_Close.setText("Back");
+        jButton_Close.setBorder(null);
         jButton_Close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_CloseActionPerformed(evt);
@@ -151,6 +155,7 @@ public class studentDetails extends javax.swing.JFrame {
         jButton_Save.setBackground(new java.awt.Color(153, 204, 255));
         jButton_Save.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
         jButton_Save.setText("Save & Proceed");
+        jButton_Save.setBorder(null);
         jButton_Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_SaveActionPerformed(evt);
@@ -182,20 +187,37 @@ public class studentDetails extends javax.swing.JFrame {
         jTextArea_Rules.setRows(5);
         jScrollPane2.setViewportView(jTextArea_Rules);
 
-        jLabel_Date.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel_Date.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel_Date.setText("Date:");
 
+        jLabel_ShowDate.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel_ShowDate.setText("Show_Date");
+
+        jButton_Search.setBackground(new java.awt.Color(0, 255, 0));
+        jButton_Search.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButton_Search.setText("Search");
+        jButton_Search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_SearchMouseClicked(evt);
+            }
+        });
+
+        jButton_Proceed.setBackground(new java.awt.Color(51, 102, 255));
+        jButton_Proceed.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
+        jButton_Proceed.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Proceed.setText("Proceed");
+        jButton_Proceed.setBorder(null);
+        jButton_Proceed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ProceedActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(408, Short.MAX_VALUE)
-                .addComponent(jButton_Save)
-                .addGap(409, 409, 409))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,12 +226,10 @@ public class studentDetails extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel_Date, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_ShowDate)
-                        .addGap(169, 169, 169)
-                        .addComponent(jButton_Close))
+                        .addComponent(jLabel_ShowDate))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jGender)
                                 .addGap(24, 24, 24)
@@ -231,28 +251,37 @@ public class studentDetails extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jTextField_Phone)))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jEmail))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField_Email, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
-                                    .addComponent(jTextField_LastName))))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2)
-                        .addContainerGap())))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jEmail))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField_Email, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                                            .addComponent(jTextField_LastName)))
+                                    .addComponent(jButton_Search)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(jButton_Proceed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton_Close, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel_StudentDetails))
+                    .addComponent(jLabel_StudentDetails)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton_Close)
-                        .addComponent(jLabel_Date)
-                        .addComponent(jLabel_ShowDate)))
+                        .addComponent(jLabel_ShowDate)
+                        .addComponent(jLabel_Date)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -260,7 +289,9 @@ public class studentDetails extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jRoll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField_Roll))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextField_Roll)
+                                .addComponent(jButton_Search)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jName)
@@ -279,19 +310,58 @@ public class studentDetails extends javax.swing.JFrame {
                             .addComponent(jEmail)
                             .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE))
                     .addComponent(jScrollPane2))
                 .addGap(18, 18, 18)
-                .addComponent(jButton_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton_Proceed, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_Close, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_SearchMouseClicked
+        String roll = jTextField_Roll.getText();
+        jButton_Save.setEnabled(false);
+        try {
+            Connection con = ConnectionProvider.getCon();
+            PreparedStatement ps = con.prepareStatement("select * from student where roll = ?");
+            ps.setString(1, roll);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                jTextField_FirstName.setText(rs.getString(2));
+                jTextField_LastName.setText(rs.getString(3));
+                jTextField_Phone.setText(rs.getString(5));
+                jTextField_Email.setText(rs.getString(6));
+                jTextField_FirstName.setEditable(false);
+                jTextField_LastName.setEditable(false);
+                jTextField_Phone.setEditable(false);
+                jTextField_Email.setEditable(false);
+            } else {
+                jTextField_FirstName.setEditable(true);
+                jTextField_LastName.setEditable(true);
+                jTextField_Phone.setEditable(true);
+                jTextField_Email.setEditable(true);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jButton_SearchMouseClicked
+
+    private void jButton_ProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ProceedActionPerformed
+        jButton_Save.setEnabled(true);
+        String phone = jTextField_Phone.getText();
+        new quizExamStudent(phone).setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jButton_ProceedActionPerformed
+
     private void jButton_CloseActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton_CloseActionPerformed
-        dispose();
         new index().setVisible(true);
+        dispose();
     }// GEN-LAST:event_jButton_CloseActionPerformed
 
     private void jTextField_RollFocusGained(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_jTextField_RollFocusGained
@@ -374,18 +444,28 @@ public class studentDetails extends javax.swing.JFrame {
 
         try {
             Connection con = ConnectionProvider.getCon();
-            PreparedStatement ps = con.prepareStatement("insert into student values(?,?,?,?,?,?,?)");
-            ps.setString(1, roll);
-            ps.setString(2, firstname);
-            ps.setString(3, lastname);
-            ps.setString(4, gender);
-            ps.setString(5, phone);
-            ps.setString(6, email);
-            ps.setString(7, marks);
-            ps.executeUpdate();
+            PreparedStatement checkStmt = con.prepareStatement("SELECT COUNT(*) FROM student WHERE phone = ? OR email = ?");
+            checkStmt.setString(1, phone);
+            checkStmt.setString(2, email);
+            ResultSet rs = checkStmt.executeQuery();
+            rs.next();
+            if (rs.getInt(1) > 0) {
+                JOptionPane.showMessageDialog(null,
+                        "Phone number or email already exists. Please enter another.");
+            } else {
+                PreparedStatement ps = con.prepareStatement("insert into student values(?,?,?,?,?,?,?)");
+                ps.setString(1, roll);
+                ps.setString(2, firstname);
+                ps.setString(3, lastname);
+                ps.setString(4, gender);
+                ps.setString(5, phone);
+                ps.setString(6, email);
+                ps.setString(7, marks);
+                ps.executeUpdate();
 
-            new quizExamStudent(roll).setVisible(true);
-            setVisible(false);
+                new quizExamStudent(phone).setVisible(true);
+                setVisible(false);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -437,7 +517,9 @@ public class studentDetails extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton_Close;
+    private javax.swing.JButton jButton_Proceed;
     private javax.swing.JButton jButton_Save;
+    private javax.swing.JButton jButton_Search;
     private javax.swing.JLabel jEmail;
     private javax.swing.JLabel jGender;
     private javax.swing.JLabel jLabel1;

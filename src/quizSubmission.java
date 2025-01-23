@@ -3,6 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.sql.*;
+
+import javax.swing.JOptionPane;
+
+import Project.ConnectionProvider;
+
 /**
  *
  * @author soham
@@ -16,10 +22,20 @@ public class quizSubmission extends javax.swing.JFrame {
         initComponents();
     }
 
-    public quizSubmission(String getMarks) {
+    public quizSubmission(String getPhoneString) {
         initComponents();
-        String marks = getMarks;
-        jLabelShowMarks.setText(marks);
+        String phone = getPhoneString;
+        try {
+            Connection con = ConnectionProvider.getCon();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select *from student where phone='" + phone + "'");
+            while (rs.next()) {
+                jLabelShowUser.setText(rs.getString(2) + " " + rs.getString(3));
+                jLabelShowMarks.setText(rs.getString(7));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -36,16 +52,17 @@ public class quizSubmission extends javax.swing.JFrame {
         jLabelShowUser = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabelShowMarks = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(926, 546));
+        setMaximumSize(new java.awt.Dimension(429, 260));
+        setMinimumSize(new java.awt.Dimension(429, 260));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(429, 260));
 
         jButtonClose.setBackground(new java.awt.Color(255, 0, 51));
-        jButtonClose.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jButtonClose.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jButtonClose.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonClose.setText("X");
+        jButtonClose.setText("Back");
         jButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCloseActionPerformed(evt);
@@ -54,23 +71,15 @@ public class quizSubmission extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Marks Obtained:");
 
         jLabelShowUser.setBackground(new java.awt.Color(0, 0, 0));
         jLabelShowUser.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        jLabelShowUser.setForeground(new java.awt.Color(0, 0, 0));
         jLabelShowUser.setText("User");
 
         jLabelShowMarks.setBackground(new java.awt.Color(0, 0, 0));
         jLabelShowMarks.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabelShowMarks.setForeground(new java.awt.Color(0, 0, 0));
         jLabelShowMarks.setText("00");
-
-        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Question Attempted:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,42 +89,38 @@ public class quizSubmission extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelShowUser)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonClose))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelShowMarks)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(250, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(0, 736, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelShowUser)
+                            .addComponent(jButtonClose))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonClose)
-                    .addComponent(jLabelShowUser))
+                .addComponent(jLabelShowUser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabelShowMarks))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addGap(0, 417, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addComponent(jButtonClose)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-        dispose();
         new index().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     /**
@@ -156,7 +161,6 @@ public class quizSubmission extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClose;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelShowMarks;
     private javax.swing.JLabel jLabelShowUser;
     private javax.swing.JSeparator jSeparator1;
