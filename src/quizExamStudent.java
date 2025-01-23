@@ -62,6 +62,8 @@ public class quizExamStudent extends javax.swing.JFrame {
 
             if (showQuestionID > totalQuestions) {
                 jButtonNext.setVisible(false);
+            } else {
+                question();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
